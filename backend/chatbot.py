@@ -27,10 +27,4 @@ def get_response(question, history):
         messages=messages
     )
 
-<<<<<<< HEAD
-    reply = chat.send_message(question)
-
-    return reply.text
-=======
     return completion.choices[0].message.content
->>>>>>> db80e6d (changes API key)
