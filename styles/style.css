@@ -1,0 +1,234 @@
+:root{
+    --bg:#0f0f0f;
+    --sidebar:#171717;
+    --card:#1d1d1d;
+    --border:#2a2a2a;
+    --hover:#292929;
+    --text-primary:#ffffff;
+    --text-secondary:#9c9c9c;
+    --accent:#5b8dee;
+}
+
+*{
+    font-family:"Inter","Segoe UI",-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+.stApp{
+    background:var(--bg);
+}
+
+.block-container{
+    max-width:820px;
+    padding-top:2rem;
+    padding-bottom:8rem;
+}
+
+h1,h2,h3{
+    color:var(--text-primary);
+    letter-spacing:-0.01em;
+}
+
+p{
+    color:var(--text-secondary);
+}
+
+/* Hero */
+.hero{
+    position:fixed;
+    top:calc(50% - 90px);
+    left:50%;
+    transform:translate(-50%, -50%);
+    width:100%;
+    text-align:center;
+    z-index:5;
+    animation:fadeIn 0.4s ease;
+}
+
+.hero h1{
+    font-size:1.9rem;
+    font-weight:600;
+    color:var(--text-primary);
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"]{
+    background:var(--sidebar);
+    border-right:1px solid var(--border);
+}
+
+.sidebar-brand{
+    font-size:1.15rem;
+    font-weight:700;
+    color:var(--text-primary);
+    padding-top:4px;
+}
+
+.sidebar-sub{
+    font-size:0.8rem;
+    color:var(--text-secondary);
+    margin-bottom:2px;
+}
+
+.sidebar-section-label{
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:#6b6b6b;
+    margin:6px 0 8px 2px;
+}
+
+.sidebar-footer{
+    font-size:0.74rem;
+    color:#6b6b6b;
+    line-height:1.4;
+}
+
+/* Generic buttons */
+.stButton>button{
+    width:100%;
+    border-radius:10px;
+    border:1px solid transparent;
+    background:transparent;
+    color:var(--text-primary);
+    padding:0.5rem 0.7rem;
+    font-size:0.86rem;
+    text-align:left;
+    transition:background 0.15s ease;
+}
+
+.stButton>button:hover{
+    background:var(--hover);
+}
+
+/* New Chat — highlighted primary action */
+[class*="st-key-new_chat_container"] .stButton>button{
+    background:var(--card);
+    border:1px solid var(--border);
+    font-weight:600;
+}
+
+[class*="st-key-new_chat_container"] .stButton>button:hover{
+    background:var(--hover);
+}
+
+/* Chat rows */
+[class*="st-key-chat_row_"] .stButton>button{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    padding:0.45rem 0.6rem;
+}
+
+/* Active chat row — CSS-only, no runtime style injection */
+[class*="st-key-chat_row_active_"] .stButton>button{
+    background:var(--hover);
+    font-weight:600;
+}
+
+/* Reveal the three-dot menu only on row hover */
+[class*="st-key-chat_row_"] div[data-testid="stPopover"]{
+    opacity:0;
+    transition:opacity 0.15s ease;
+}
+
+[class*="st-key-chat_row_"]:hover div[data-testid="stPopover"]{
+    opacity:1;
+}
+
+div[data-testid="stPopover"]>button{
+    background:transparent;
+    border:none;
+    padding:0.4rem 0.3rem;
+    font-size:1rem;
+    letter-spacing:0.1em;
+    color:var(--text-secondary);
+}
+
+div[data-testid="stPopover"]>button:hover{
+    background:var(--hover);
+    color:var(--text-primary);
+}
+
+/* Chat messages */
+div[data-testid="stChatMessage"]{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:14px 16px;
+    margin-bottom:14px;
+    animation:fadeIn 0.3s ease;
+}
+
+div[data-testid="stChatMessage"]:has(div[data-testid="stChatMessageAvatarUser"]){
+    background:#1a2333;
+    border-color:#2b3a52;
+}
+
+div[data-testid="stChatMessage"]:has(div[data-testid="stChatMessageAvatarAssistant"]){
+    background:var(--card);
+    border-color:var(--border);
+}
+
+div[data-testid="stChatMessage"] p{
+    color:var(--text-primary);
+    font-size:0.95rem;
+    line-height:1.6;
+}
+
+div[data-testid="stChatMessage"] pre{
+    background:#141414;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:12px 14px;
+}
+
+div[data-testid="stChatMessage"] code{
+    color:#e6e6e6;
+    font-family:"JetBrains Mono","Fira Code",monospace;
+    font-size:0.85rem;
+}
+
+div[data-testid="stChatMessage"] table{
+    border-collapse:collapse;
+    width:100%;
+}
+
+div[data-testid="stChatMessage"] th,
+div[data-testid="stChatMessage"] td{
+    border:1px solid var(--border);
+    padding:6px 10px;
+    font-size:0.85rem;
+}
+
+/* Chat input bar */
+div[data-testid="stChatInput"]{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    box-shadow:0 6px 24px rgba(0,0,0,0.45);
+}
+
+div[data-testid="stChatInput"] textarea{
+    color:var(--text-primary) !important;
+    font-size:0.95rem;
+}
+
+div[data-testid="stChatInput"] button{
+    background:var(--accent) !important;
+    border-radius:10px !important;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(4px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@media (max-width: 768px){
+    .block-container{
+        padding-left:1rem;
+        padding-right:1rem;
+    }
+    .hero h1{
+        font-size:1.5rem;
+    }
+}
