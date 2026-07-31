@@ -78,11 +78,12 @@ encoderx-ai-chatbot/
 ├── .streamlit/
 │   └── config.toml
 │
+├── .env
+├── .gitignore
 ├── app.py
 ├── requirements.txt
 ├── README.md
-├── .env
-└── .gitignore
+└── REPORT.md
 ```
 
 ---
